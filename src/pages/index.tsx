@@ -1,21 +1,38 @@
-import Layout from '@/components/layout'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Layout from "@/components/layout";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@radix-ui/react-switch";
 
 export default function Home() {
   return (
-    <Layout>
-      <Card className="w-full max-w-3xl mx-auto">
-        <CardHeader>
-          <CardTitle>Welcome to BeautyNext</CardTitle>
-          <CardDescription>Your one-stop beauty solution</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-lg">
-            Discover the latest trends, products, and techniques in the world of beauty. 
-            Whether you're a professional or just starting out, BeautyNext has something for everyone.
-          </p>
-        </CardContent>
-      </Card>
-    </Layout>
-  )
+    <>
+      <Layout/>
+      <p className="text-red-300">abc</p>
+    </>
+  );
 }
