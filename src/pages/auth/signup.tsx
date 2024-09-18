@@ -39,7 +39,7 @@ export default function SignUp() {
         title: "Sign up successful",
         description: "Please sign in with your new account.",
       })
-      router.push('/signin')
+      router.push('/auth/signin')
     } catch (error) {
       toast({
         title: "Sign up failed",
