@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import axiosInstance from '@/lib/axios-interceptor'
+import { useDispatch } from 'react-redux'
+import { login } from '@/slices/authSlice'
 
 
 const formSchema = z.object({
@@ -20,6 +22,7 @@ const formSchema = z.object({
 export default function SignIn() {
   const router = useRouter()
   const { toast } = useToast()
+  const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -35,6 +38,8 @@ export default function SignIn() {
     try {
       const response = await axiosInstance.post('/auth/signin', values)
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem("userId",response.data.user.id)
+      dispatch(login(response.data))
       toast({
         title: "Sign in successful",
         description: "Welcome back!",

@@ -1,18 +1,34 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectAuth } from "@/slices/authSlice";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const [isAuth, setIsAuth] = useState<Boolean>(false);
   const router = useRouter();
+  const authoziration = useSelector(selectAuth);
+  const dispatch = useDispatch();
+  
 
   const handleSignIn = () => {
     router.push("auth/signin");
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem("token");
+    dispatch(logout())
+    localStorage.clear()
     router.push("/auth/signin");
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("userId")) {
+      setIsAuth(true);
+    } else {
+      return 
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -30,11 +46,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Link>
             <Button
               variant="outline"
-              onClick={
-                localStorage.getItem("token") ? handleLogOut : handleSignIn
-              }
+              onClick={isAuth ? handleLogOut : handleSignIn}
             >
-              {localStorage.getItem("token") ? "Log Out" : "Sign in"}
+              {isAuth ? "Logout" : "Signin"}
             </Button>
           </div>
         </nav>
