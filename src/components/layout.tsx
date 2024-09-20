@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Switch } from "@radix-ui/react-switch";
+import { Router, useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectAuth } from "@/slices/authSlice";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -56,6 +59,26 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export default function NavigationMenuDemo() {
+  const [isAuthed, setIsAuthed] = React.useState<boolean>(false);
+  const dispatch = useDispatch()
+  const selectUser = useSelector(selectAuth)
+  const router = useRouter()
+
+  const handleSignIn = () => {
+    router.push("auth/signin");
+  };
+
+  const handleLogOut = () => {
+    dispatch(logout())
+    localStorage.clear()
+    router.push("/auth/signin");
+  };
+  
+  React.useEffect(() => {
+    if (localStorage.getItem("userId")) {
+      setIsAuthed(true);
+    }
+  }, []);
   return (
     <div className="flex items-center justify-center">
       <NavigationMenu>
@@ -135,29 +158,20 @@ export default function NavigationMenuDemo() {
                         <AvatarFallback>CN</AvatarFallback>
                       </Avatar>
                       <div className="mb-2 mt-4 text-lg font-medium">
-                        user-name
+                        {selectUser.user?.name}
                       </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        User-Bio: Beautifully designed components that you can
-                        copy and paste into your apps. Accessible. Customizable.
-                        Open Source.
-                      </p>
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
+                <ListItem href="/auth/signin" title="Signin">
+                  Signin
                 </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
-                </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
+                <ListItem href="/auth/signup" title="Signup">
+                  Signup
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          
         </NavigationMenuList>
       </NavigationMenu>
     </div>

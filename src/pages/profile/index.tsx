@@ -27,7 +27,9 @@ export default function Profile() {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axiosInstance.get(`/profile/${localStorage.getItem("userId")}`);
+        const response = await axiosInstance.get(
+          `/profile/${localStorage.getItem("userId")}`
+        );
         setUser(response.data);
       } catch (error) {
         toast({
@@ -42,11 +44,11 @@ export default function Profile() {
   }, [toast]);
 
   if (!user) {
-    return <Layout>Loading...</Layout>;
+    return <p>Loading...</p>;
   }
-  console.log(param)
+  console.log(param);
   return (
-    <Layout>
+    <>
       <Card className="w-full max-w-2xl mx-auto">
         <CardHeader>
           <CardTitle>User Profile</CardTitle>
@@ -65,6 +67,6 @@ export default function Profile() {
           </div>
         </CardContent>
       </Card>
-    </Layout>
+    </>
   );
 }
