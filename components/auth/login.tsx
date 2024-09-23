@@ -7,13 +7,15 @@ import { Button, Input } from "@nextui-org/react";
 import { Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import useRequest from "../hooks/useRequest";
 import { API } from "@/config/api/api";
 import { useDispatch } from "react-redux";
 import { login } from "@/config/redux/userSlice";
+import Loader from "../comp/Loading";
 
 export const Login = () => {
+  const [loading, setLoading] = useState<boolean>(false)
   const router = useRouter();
   const request = useRequest()
   const dispatch = useDispatch()
@@ -27,10 +29,12 @@ export const Login = () => {
     async (values: LoginFormType) => {
       // `values` contains email & password. You can use provider to connect user
       try {
+        setLoading(true)
         const res = await request.post(API.SIGNIN,values)
         if(res){
           await createAuthCookie(res.data.token);
           dispatch(login(res.data))
+          setLoading(false)
           router.push("/")
         }
       } catch (error) {
@@ -43,7 +47,7 @@ export const Login = () => {
   return (
     <>
       <div className='text-center text-[25px] font-bold mb-6'>Login</div>
-
+      {loading && <Loader/>}
       <Formik
         initialValues={initialValues}
         validationSchema={LoginSchema}

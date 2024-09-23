@@ -1,6 +1,7 @@
 "use client";
 
 import { createAuthCookie } from "@/actions/auth.action";
+import { login } from "@/config/redux/userSlice";
 import { RegisterSchema } from "@/helpers/schemas";
 import { RegisterFormType } from "@/helpers/types";
 import { Button, Input } from "@nextui-org/react";
@@ -8,22 +9,36 @@ import { Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import useRequest from "../hooks/useRequest";
+import { API } from "@/config/api/api";
 
 export const Register = () => {
   const router = useRouter();
+  const dispatch = useDispatch()
+  const request = useRequest()
 
   const initialValues: RegisterFormType = {
-    name: "Acme",
-    email: "admin@acme.com",
-    password: "admin",
-    confirmPassword: "admin",
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   };
 
   const handleRegister = useCallback(
     async (values: RegisterFormType) => {
-      // `values` contains name, email & password. You can use provider to register user
+      try {
+        const res = await request.post(API.SIGNUP,values)
+        if(res){
+          await createAuthCookie(res.data.token);
+          dispatch(login(res.data))
+          router.push("/")
+        }
+      } catch (error) {
+        alert("error")
+      }
 
-      await createAuthCookie();
+      await createAuthCookie("auth");
       router.replace("/");
     },
     [router]
