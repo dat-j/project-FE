@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { login, selectUser } from '@/redux/userSlice'
 import { API } from '@/api/api'
 import Cookies from "js-cookie"
+import { useRouter } from 'next/router'
 
 type UserData = {
   name: string
@@ -27,13 +28,15 @@ type UserData = {
 export default function ProfilePage() {
   const [userData, setUserData] = useState<UserData | null>(null)
   const request = useRequest()
+  const router = useRouter()
   const idUser = Cookies.get("idUser")
 
   useEffect(() => {
     // Simulating an API call to fetch user data
     const fetchUserData = async () => {
       // In a real application, you would fetch this data from an API
-      const res = await request.get(API.GET_USER_INFO_BY_ID+idUser)
+      if(idUser){
+        const res = await request.get(API.GET_USER_INFO_BY_ID+idUser)
       //setUserData(res.data)
       const data: UserData = {
         name: res.data.name,
@@ -54,6 +57,10 @@ export default function ProfilePage() {
         skills: ["JavaScript", "React", "Node.js", "Python", "GraphQL"]
       }
       setUserData(data)
+      }
+      else{
+        router.push('/auth/signin')
+      }
     }
 
     fetchUserData()

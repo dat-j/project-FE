@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {layoutCollection.includes(router.pathname) ? (
         <>
           <LayoutTop />
-          <LayoutCollection />
+          {/* <LayoutCollection /> */}
           {/* <Layout/> */}
           <Component {...pageProps} />
         </>

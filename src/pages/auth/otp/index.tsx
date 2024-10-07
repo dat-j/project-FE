@@ -1,9 +1,17 @@
 import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+
+type InputOTP = {
+  num1: string,
+  num2: string,
+  num3: string,
+  num4: string
+}
+
 const OTP = "2401"
 const Form = () => {
-    const [inputValue, setInputValue] = useState<string>()
+    const [inputValue, setInputValue] = useState<InputOTP>({num1:"",num2:"",num3:"",num4:""})
     const router = useRouter()
     const inputRef = useRef<any>([])
     const [index, setIndex] = useState(0)
@@ -11,8 +19,11 @@ const Form = () => {
 
 
     const handleSumbitOTP = () => {
-        if(inputValue === OTP){
-            router.push({pathname:"/home"})
+        if(`${inputValue.num1}${inputValue.num2}${inputValue.num3}${inputValue.num4}`===OTP){
+            alert("Passed!")
+        }
+        else{
+          alert("OTP fail!")
         }
     }
 
@@ -28,7 +39,10 @@ const Form = () => {
             return
         }
     }
-
+    // console.log("=========================")
+    // console.log(inputRef.current)
+    // console.log(inputValue)
+    // console.log("=========================")
   return (
     <StyledWrapper>
       <form className="otp-Form">
@@ -43,7 +57,11 @@ const Form = () => {
             type="text"
             className="otp-input"
             id="otp-input1"
-            onInput={handleInputKey}
+            onInputCapture={()=>console.log('aaa')}
+            onChange={(e)=>{
+              
+              setInputValue({...inputValue,num1:e.target.value.trim()})
+            }}
           />
           <input
             required
@@ -51,7 +69,8 @@ const Form = () => {
             type="text"
             className="otp-input"
             id="otp-input2"
-            onInput={handleInputKey}
+            //onInput={handleInputKey}
+            onChange={(e)=>setInputValue({...inputValue,num2:e.target.value.trim()})}
           />
           <input
             required
@@ -59,7 +78,8 @@ const Form = () => {
             type="text"
             className="otp-input"
             id="otp-input3"
-            onInput={handleInputKey}
+            //onInput={handleInputKey}
+            onChange={(e)=>setInputValue({...inputValue,num3:e.target.value.trim()})}
           />
           <input
             required
@@ -67,10 +87,11 @@ const Form = () => {
             type="text"
             className="otp-input"
             id="otp-input4"
-            onInput={handleInputKey}
+            //onInput={handleInputKey}
+            onChange={(e)=>setInputValue({...inputValue,num4:e.target.value.trim()})}
           />
         </div>
-        <button className="verifyButton" type="submit" onClick={handleSumbitOTP}>
+        <button className="verifyButton" type="submit" onClick={()=>handleSumbitOTP()}>
           Verify
         </button>
         <button className="exitBtn">&times;</button>

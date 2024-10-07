@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { API } from "@/api/api";
-import TextLoader from "@/components/TextLoading";
+//import TextLoader from "@/components/TextLoading";
 import { useDispatch } from "react-redux";
 import { login } from "@/redux/userSlice";
 
@@ -42,7 +42,7 @@ const LoginForm = () => {
   };
   return (
     <div className="w-full flex items-center justify-center pt-[2%] ">
-      {loading ? <TextLoader /> : null}
+      {loading ? <p>LOADING...</p> : null}
       <StyledWrapper>
         <div className="container">
           <div className="card">
