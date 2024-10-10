@@ -1,40 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div>
+  <h1>
+    Enji Kusnadi
+    &middot;
+    <img src="https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fwww.enji.dev"/>
+    <img src="https://img.shields.io/github/deployments/enjidev/enji.dev/production?label=production&style=flat-square"/>
+    <img src="https://img.shields.io/github/commit-activity/m/enjidev/enji.dev?style=flat-square"/>
+  </h1>
+</div>
 
-## Getting Started
+A monorepo for my personal website and projects, built with Turborepo and pnpm.
 
-First, run the development server:
+## 📘 [enji.dev](https://www.enji.dev)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A personal website with a blog, project showcase, and work information.
+
+https://user-images.githubusercontent.com/95107212/210668021-fd49431f-85a3-4bd7-bf9e-09639cb38922.mp4
+
+### Tech Stack
+
+- 🚀 Next.js + TypeScript
+- ➰ Framer Motion
+- 🍃 Tailwind CSS
+- ✍ MDX
+
+### Running the Project
+
+To get started, I recommend [installing pnpm](https://pnpm.io/installation) since it's the package manager used in this repository.
+
+Begin by forking the repository and then cloning it to your local machine:
+
+```
+git clone <your-fork>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navigate to the project's root directory:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+cd ./enji.dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Next, copy the development version of the `env` file:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+cp ./apps/enji.dev/env.example ./apps/enji.dev/env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Now, you have the `env.local` file ready for configuration:
 
-## Learn More
+```
+DATABASE_URL = your-database-connection-string
+SALT_IP_ADDRESS = super-secret
+```
 
-To learn more about Next.js, take a look at the following resources:
+For the `DATABASE_URL` use your database connection string. I personally use the free version of [MongoDB](https://www.mongodb.com/), and you can do the same by creating a database there and [adding the connection string](https://www.mongodb.com/basics/mongodb-connection-string) to the `env.local`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+As for `SALT_IP_ADDRESS`, feel free to fill it with some of your secret words. It acts as a salt for hashing users' IP addresses.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Once configuration is complete, still at the root of the project directory, install the required dependencies:
 
-## Deploy on Vercel
+```
+pnpm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Finally, run the project:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+pnpm dev
+```
+
+Now, your project should be up and running smoothly!
