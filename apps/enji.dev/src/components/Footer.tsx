@@ -112,7 +112,7 @@ function FooterDescription() {
         About Me
       </div>
       <p className={clsx('mb-4 font-normal leading-relaxed')}>
-        I&apos;m Enji, a <strong>front-end developer</strong> who loves
+        I&apos;m chufice, a <strong>full-stack developer</strong> who loves
         intuitive, clean and modern UI design.
       </p>
       <ul className={clsx('-ml-2 flex gap-1')}>

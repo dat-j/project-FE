@@ -70,9 +70,9 @@ function HeaderTitle() {
         >
           I&apos;m{' '}
           <strong className={clsx('text-accent-600', 'dark:text-accent-500')}>
-            Enji
+            chufice
           </strong>{' '}
-          Kusnadi,{' '}
+          chufice,{' '}
         </m.span>
         <m.h1
           className={clsx(
@@ -91,7 +91,7 @@ function HeaderTitle() {
               'dark:text-slate-300'
             )}
           >
-            Front-End Developer
+            Full-stack Developer
           </strong>{' '}
           who loves intuitive,{' '}
           <span className={clsx('block')}>clean and modern UI design.</span>
