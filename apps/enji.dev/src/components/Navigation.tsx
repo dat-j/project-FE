@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { GitHubIcon, TwitterIcon } from '@/components/Icons';
+import { FacebookIcon, GitHubIcon } from '@/components/Icons';
 import NavIcon from '@/components/navigations/NavIcon';
 import NavIconQuickAccess from '@/components/navigations/NavIconQuickAccess';
 import NavLink from '@/components/navigations/NavLink';
@@ -68,7 +68,7 @@ function Navbar() {
             <li className={clsx('hidden', 'sm:block')}>
               <NavIcon
                 href="https://twitter.com/enjidev"
-                icon={<TwitterIcon className={clsx('h-5 w-5')} />}
+                icon={<FacebookIcon className={clsx('h-5 w-5')} />}
                 title="Twitter"
               />
             </li>

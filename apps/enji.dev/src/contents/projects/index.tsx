@@ -15,9 +15,9 @@ function ProjectsContents() {
   return (
     <>
       <SectionTitle
-        title="The dynamic accent colors."
-        caption="tailwindcss-accent"
-        description="Add accent colors for dynamic, flexible color use in your Tailwind CSS project."
+        title="The simple todo-app."
+        caption="React starter"
+        description="CRUD React project using tailwind-css and mockup.io for api."
         button={{
           title: 'learn more',
           href: '/docs/tailwindcss-accent',
@@ -34,13 +34,13 @@ function ProjectsContents() {
                 active={currentState === 'github'}
                 onClick={() => setCurrentState('github')}
               />
-              <SectionButton
+              {/* <SectionButton
                 title="npm package"
                 icon={<NpmIcon className={clsx('my-2 h-16 w-16')} />}
                 description="Install and use the package with ease thanks to its typed options."
                 active={currentState === 'npm'}
                 onClick={() => setCurrentState('npm')}
-              />
+              /> */}
             </div>
           </div>
           <div className={clsx('w-full', 'lg:w-auto')}>
@@ -51,31 +51,31 @@ function ProjectsContents() {
                   browserTabs={[
                     {
                       icon: <GitHubIcon className="h-4 w-4" />,
-                      title: 'enjidev/tailwindcss-accent - GitHub',
+                      title: 'dat-j/todo-app-functional',
                       isActive: currentState === 'github',
                     },
-                    {
-                      icon: <NpmIcon className="h-4 w-4" />,
-                      title: 'tailwindcss-accent - npm',
-                      isActive: currentState === 'npm',
-                    },
+                    // {
+                    //   icon: <NpmIcon className="h-4 w-4" />,
+                    //   title: 'tailwindcss-accent - npm',
+                    //   isActive: currentState === 'npm',
+                    // },
                   ]}
                 >
                   {currentState === 'github' && (
                     <GitHubWireframe
-                      author="enjidev"
+                      author="dat-j"
                       license="MIT"
-                      repository="tailwindcss-accent"
-                      description="Adds accent colors for more dynamic and flexible color utilization."
+                      repository="todo-app-functional"
+                      description="Simple CRUD todo-app with React and tailwind-css."
                     />
                   )}
-                  {currentState === 'npm' && (
+                  {/* {currentState === 'npm' && (
                     <NpmWireframe
                       packageName="tailwindcss-accent"
                       description="Adds accent colors for more dynamic and flexible color utilization."
                       isWithTypeScript
                     />
-                  )}
+                  )} */}
                 </AppWindow>
               </div>
             </div>

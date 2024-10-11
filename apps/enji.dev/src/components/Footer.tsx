@@ -5,7 +5,7 @@ import {
   ExternalLink,
   FigmaIcon,
   GitHubIcon,
-  TwitterIcon,
+  FacebookIcon,
 } from '@/components/Icons';
 
 import dayjs from '@/utils/dayjs';
@@ -13,7 +13,7 @@ import dayjs from '@/utils/dayjs';
 function LastUpdate() {
   return (
     <a
-      href="https://github.com/enjidev/enji.dev"
+      href="https://github.com/dat-j"
       target="_blank"
       rel="noreferrer nofollow"
       className={clsx('hover:underline')}
@@ -125,7 +125,7 @@ function FooterDescription() {
             aria-label="My Twitter profile"
             title="My Twitter profile"
           >
-            <TwitterIcon className={clsx('h-5 w-5')} />
+            <FacebookIcon className={clsx('h-5 w-5')} />
           </a>
         </li>
         <li>
@@ -140,7 +140,7 @@ function FooterDescription() {
             <GitHubIcon className={clsx('h-5 w-5')} />
           </a>
         </li>
-        <li>
+        {/* <li>
           <a
             href="https://figma.com/@enjidev"
             target="_blank"
@@ -151,7 +151,7 @@ function FooterDescription() {
           >
             <FigmaIcon className={clsx('h-5 w-5')} />
           </a>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
@@ -220,12 +220,12 @@ function Footer() {
                   links={[
                     {
                       title: 'Design Concept',
-                      href: 'https://www.figma.com/community/file/1176392613303840973',
+                      href: '/',
                       isInternal: false,
                     },
                     {
                       title: 'Source Code',
-                      href: 'https://github.com/enjidev/enji.dev',
+                      href: '/',
                       isInternal: false,
                     },
                     {
@@ -245,7 +245,7 @@ function Footer() {
           )}
         >
           <div className={clsx('font-semibold')}>
-            &copy; {dayjs().format('YYYY')}, Enji Kusnadi
+            &copy; {dayjs().format('YYYY')}, Chufice
           </div>
           <div className={clsx('text-slate-500', 'dark:text-slate-400')}>
             <LastUpdate />

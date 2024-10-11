@@ -2,8 +2,10 @@ import clsx from 'clsx';
 import { m } from 'framer-motion';
 
 import {
+  DockerIcon,
   FigmaIcon,
   FramerMotionIcon,
+  NestJsIcon,
   NextJsIcon,
   ReactIcon,
   TailwindCssIcon,
@@ -69,6 +71,15 @@ function HeaderTechStack() {
           </div>
         </m.li>
         <m.li variants={animation}>
+          <div
+            className={clsx(
+              'transition duration-200 hover:text-[#ea2845] dark:hover:text-[#ea2845]'
+            )}
+          >
+            <NestJsIcon className={clsx('h-6 w-6')} />
+          </div>
+        </m.li>
+        <m.li variants={animation}>
           <div className={clsx('h-3 w-[1px] bg-slate-300 dark:bg-slate-700')} />
         </m.li>
         <m.li variants={animation}>
@@ -77,10 +88,16 @@ function HeaderTechStack() {
           </div>
         </m.li>
         <m.li variants={animation}>
+          <div className={clsx('transition duration-200 hover:text-[#2396ed]')}>
+            <DockerIcon className={clsx('h-6 w-6')} />
+          </div>
+        </m.li>
+        <m.li variants={animation}>
           <div className={clsx('transition duration-200 hover:text-[#F24E1E]')}>
             <FigmaIcon className={clsx('h-6 w-6')} />
           </div>
         </m.li>
+        
       </m.ul>
     </div>
   );

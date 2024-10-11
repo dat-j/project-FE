@@ -8,7 +8,7 @@ import {
   ExternalLink,
   NoteIcon,
   ShareIcon,
-  TwitterIcon,
+  FacebookIcon,
 } from '@/components/Icons';
 
 import useCurrentUrl from '@/hooks/useCurrentUrl';
@@ -137,7 +137,7 @@ function ShareButton({ onItemClick = () => {} }: ShareButtonProps) {
                     href={`https://twitter.com/intent/tweet?via=enjidev&url=${currentUrl}`}
                     onClick={handleTwitter}
                   >
-                    <TwitterIcon className={clsx('h-4 w-4')} />
+                    <FacebookIcon className={clsx('h-4 w-4')} />
                     <span className={clsx('flex items-center gap-2')}>
                       Twitter
                       <ExternalLink className={clsx('h-3 w-3')} />
