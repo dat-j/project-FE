@@ -1,44 +1,17 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^2.2.7",
-    "axios": "^1.7.7",
-    "child_process": "^1.0.2",
-    "express": "^4.21.0",
-    "formik": "^2.4.6",
-    "framer-motion": "^11.5.6",
-    "fs": "^0.0.1-security",
-    "mammoth": "^0.3.0",
-    "next": "14.2.13",
-    "next-themes": "^0.3.0",
-    "officegen": "^0.6.5",
-    "pptxgenjs": "^3.12.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.3.0",
-    "react-redux": "^9.1.2",
-    "styled-components": "^6.1.13",
-    "textract": "^2.5.0"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "@types/js-cookie": "^3.0.6",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "babel-plugin-styled-components": "^2.1.4",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.13",
-    "js-cookie": "^3.0.5",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
-  }
+    "eslint": "^8.31.0",
+    "prettier": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@7.22.0"
 }
