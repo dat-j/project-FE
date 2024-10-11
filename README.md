@@ -1,71 +1,40 @@
-<div>
-  <h1>
-    Enji Kusnadi
-    &middot;
-    <img src="https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fwww.enji.dev"/>
-    <img src="https://img.shields.io/github/deployments/enjidev/enji.dev/production?label=production&style=flat-square"/>
-    <img src="https://img.shields.io/github/commit-activity/m/enjidev/enji.dev?style=flat-square"/>
-  </h1>
-</div>
+# DigitalHippo - A Modern Fullstack E-Commerce Marketplace for Digital Products
 
-A monorepo for my personal website and projects, built with Turborepo and pnpm.
+Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
 
-## 📘 [enji.dev](https://www.enji.dev)
+![Project Image](https://github.com/joschan21/digitalhippo/blob/master/public/thumbnail.jpg)
 
-A personal website with a blog, project showcase, and work information.
+## Features
 
-https://user-images.githubusercontent.com/95107212/210668021-fd49431f-85a3-4bd7-bf9e-09639cb38922.mp4
+- 🛠️ Complete marketplace built from scratch in Next.js 14
+- 💻 Beautiful landing page & product pages included
+- 🎨 Custom artwork included
+- 💳 Full admin dashboard
+- 🛍️ Users can purchase and sell their own products
+- 🛒 Locally persisted shopping cart
+- 🔑 Authentication using Payload
+- 🖥️ Learn how to self-host Next.js
+- 🌟 Clean, modern UI using shadcn-ui
+- ✉️ Beautiful emails for signing up and after purchase
+- ✅ Admins can verify products to ensure high quality
+- ⌨️ 100% written in TypeScript
+- 🎁 ...much more
 
-### Tech Stack
+## Getting started
 
-- 🚀 Next.js + TypeScript
-- ➰ Framer Motion
-- 🍃 Tailwind CSS
-- ✍ MDX
+To get started with this project, run
 
-### Running the Project
-
-To get started, I recommend [installing pnpm](https://pnpm.io/installation) since it's the package manager used in this repository.
-
-Begin by forking the repository and then cloning it to your local machine:
-
-```
-git clone <your-fork>
+```bash
+  git clone https://github.com/joschan21/digitalhippo.git
 ```
 
-Navigate to the project's root directory:
+and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
 
-```
-cd ./enji.dev
-```
 
-Next, copy the development version of the `env` file:
+## Acknowledgements
 
-```
-cp ./apps/enji.dev/env.example ./apps/enji.dev/env.local
-```
+- [Payload](https://link.joshtriedcoding.com/payload) for making this project possible
 
-Now, you have the `env.local` file ready for configuration:
+## License
 
-```
-DATABASE_URL = your-database-connection-string
-SALT_IP_ADDRESS = super-secret
-```
-
-For the `DATABASE_URL` use your database connection string. I personally use the free version of [MongoDB](https://www.mongodb.com/), and you can do the same by creating a database there and [adding the connection string](https://www.mongodb.com/basics/mongodb-connection-string) to the `env.local`.
-
-As for `SALT_IP_ADDRESS`, feel free to fill it with some of your secret words. It acts as a salt for hashing users' IP addresses.
-
-Once configuration is complete, still at the root of the project directory, install the required dependencies:
-
-```
-pnpm install
-```
-
-Finally, run the project:
-
-```
-pnpm dev
-```
-
-Now, your project should be up and running smoothly!
+[MIT](https://choosealicense.com/licenses/mit/)
