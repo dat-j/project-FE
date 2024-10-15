@@ -51,10 +51,10 @@ export const DATA = {
 
         navbar: true,
       },
-      email: {
-        name: "Send Email",
-        url: "#",
-        icon: Icons.email,
+      Profile: {
+        name: "Profile",
+        url: "/me",
+        icon: Icons.person,
 
         navbar: true,
       },
