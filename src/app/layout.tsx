@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
+import { ReduxProvider } from "@/redux/ReduxProvider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -63,7 +66,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            {children}
+            <ReduxProvider>{children}</ReduxProvider>
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>

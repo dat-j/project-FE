@@ -10,6 +10,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import useRequest from '@/api/useRequest'
+import { API } from '@/api/api'
+import { useUser } from '@/redux/hooks'
 
 const formSchema = z.object({
   email: z.string().email({
@@ -23,6 +26,8 @@ const formSchema = z.object({
 export default function SignIn() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const Request = useRequest()
+  const {saveUserInfo} = useUser()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -32,18 +37,32 @@ export default function SignIn() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     // Here you would typically send a request to your authentication API
-    console.log(values)
-    setTimeout(() => {
-      setIsLoading(false)
-      router.push('/dashboard') // Redirect to dashboard after successful sign-in
-    }, 3000)
+    try {
+      const res = await Request.post(API.USER_SIGN_IN,values)
+      if(res.data){
+        //save to sessionStorage
+        sessionStorage.setItem("idUser",res.data.user.id)
+        sessionStorage.setItem("userName",res.data.user.username)
+        //save to Redux
+        saveUserInfo({id:res.data.user.id, name:res.data.user.name, email:res.data.user.email, username: res.data.user.username})
+        setTimeout(() => {
+          setIsLoading(false)
+          alert("login success!")
+          // router.push('/dashboard') // Redirect to dashboard after successful sign-in
+        }, 3000)
+      }
+    } catch (error) {
+      throw new Error("Error Login!")
+    }
+    
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Sign In</CardTitle>

@@ -1,10 +1,10 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, MessageCircleMore } from "lucide-react";
 
 export const DATA = {
   name: "Chufice",
   initials: "DV",
-  url: "https://dillion.io",
+  url: "https://google.com",
   location: "Hanoi, Vietnam",
   locationLink: "https://www.google.com",
   description:
@@ -25,6 +25,7 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/chat", icon: MessageCircleMore , label: "Chat" },
   ],
   contact: {
     email: "tranxuandat.dev@gmail.com",
@@ -53,11 +54,12 @@ export const DATA = {
       },
       Profile: {
         name: "Profile",
-        url: "/me",
+        url: "/signin",
         icon: Icons.person,
 
         navbar: true,
       },
+      
     },
   },
 
