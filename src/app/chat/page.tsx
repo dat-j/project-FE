@@ -59,7 +59,7 @@ export default function Chat() {
     <div className="flex flex-col h-screen bg-gray-100">
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg: any) => (
-          <div className="min-w-min flex gap-2 items-center">
+          <div key={msg.id} className="min-w-min flex gap-2 items-center">
             <div className="flex justify-center flex-col items-center">
               <img
                 className="h-16 w-16 rounded-[50%]"
@@ -68,10 +68,7 @@ export default function Chat() {
               />
               <span className="font-bold">{msg.username} </span>
             </div>
-            <div
-              key={msg.id}
-              className="bg-white p-3 rounded-lg shadow w-fit h-[50%]"
-            >
+            <div className="bg-white p-3 rounded-lg shadow w-fit h-[50%]">
               <p className="max-w-min">{msg.content}</p>
             </div>
           </div>
