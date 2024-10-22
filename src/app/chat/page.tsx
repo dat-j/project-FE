@@ -2,17 +2,26 @@
 import { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import axios from "axios";
+import Image from "next/image";
+
+interface Message {
+  id: number;
+  avatarUrl: string;
+  username: string;
+  content: string;
+}
 
 const socket = io("http://localhost:3002");
 
 export default function Chat() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const userId = sessionStorage.getItem("idUser");
 
   useEffect(() => {
-    socket.on("newMessage", (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
+    socket.on("newMessage", (message: Message) => {
+      setMessages((prevMessages: Message[]) => [...prevMessages, message]);
     });
 
     fetchMessages();
@@ -44,7 +53,6 @@ export default function Chat() {
         // const token = localStorage.getItem('token');
         // const decodedToken = JSON.parse(atob(token.split('.')[1]));
         // const userId = decodedToken.sub;
-        const userId = sessionStorage.getItem("idUser");
         socket.emit("sendMessage", { userId, content: inputMessage });
         setInputMessage("");
       } catch (error) {
@@ -61,8 +69,10 @@ export default function Chat() {
         {messages.map((msg: any) => (
           <div key={msg.id} className="min-w-min flex gap-2 items-center">
             <div className="flex justify-center flex-col items-center">
-              <img
-                className="h-16 w-16 rounded-[50%]"
+              <Image
+                className="rounded-[50%]"
+                height={48}
+                width={48}
                 src={msg.avatarUrl}
                 alt="user avatar"
               />
