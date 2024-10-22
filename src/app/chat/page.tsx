@@ -17,9 +17,10 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const userId = sessionStorage.getItem("idUser") || "";
+  const [idUser, setIdUser] = useState<any>()
 
   useEffect(() => {
+    setIdUser(sessionStorage.getItem("idUser"))
     socket.on("newMessage", (message: Message) => {
       setMessages((prevMessages: Message[]) => [...prevMessages, message]);
     });
@@ -53,7 +54,7 @@ export default function Chat() {
         // const token = localStorage.getItem('token');
         // const decodedToken = JSON.parse(atob(token.split('.')[1]));
         // const userId = decodedToken.sub;
-        socket.emit("sendMessage", { userId, content: inputMessage });
+        socket.emit("sendMessage", { idUser, content: inputMessage });
         setInputMessage("");
       } catch (error) {
         console.error("Failed to send message:", error);
