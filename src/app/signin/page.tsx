@@ -27,6 +27,8 @@ import {
 import useRequest from "@/api/useRequest";
 import { API } from "@/api/api";
 import { useUser } from "@/redux/hooks";
+import { useFetch } from "@/api/tool";
+
 
 const formSchema = z.object({
   email: z.string().email({
@@ -37,11 +39,14 @@ const formSchema = z.object({
   }),
 });
 
+
+
 export default function SignIn() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const Request = useRequest();
   const { saveUserInfo } = useUser();
+  const {fetchUser} = useFetch()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -55,10 +60,10 @@ export default function SignIn() {
     setIsLoading(true);
     // Here you would typically send a request to your authentication API
     try {
-      const res = await Request.post(API.USER_SIGN_IN, values);
+      const res = await fetchUser(values)
       if (res.data) {
         //save to sessionStorage
-        sessionStorage.setItem("idUser", res.data.user.id);
+        sessionStorage.setItem("idUser", res.data?.user.id);
         //save to Redux
         saveUserInfo({
           id: res.data.user.id,

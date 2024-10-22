@@ -63,7 +63,7 @@ api.interceptors.response.use(
   }
 )
 
-export function useRequest<T>(): UseRequestReturn<T> {
+export function useRequest<T=any>(): UseRequestReturn<T> {
   const [state, setState] = useState<RequestState<T>>({
     data: null,
     isLoading: false,
