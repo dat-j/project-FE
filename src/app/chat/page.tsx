@@ -17,7 +17,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const userId = sessionStorage.getItem("idUser");
+  const userId = sessionStorage.getItem("idUser") || "";
 
   useEffect(() => {
     socket.on("newMessage", (message: Message) => {
@@ -60,9 +60,6 @@ export default function Chat() {
       }
     }
   };
-  {
-    console.log(messages);
-  }
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
