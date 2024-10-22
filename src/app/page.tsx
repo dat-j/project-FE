@@ -223,7 +223,6 @@ export default function Page() {
     // </main>
     <>
       <div className="rounded-xl p-1 bg-red-500">
-      <iframe src="https://pm.ambition-cloud.jp/authentication/signin/" frameborder="1"></iframe>
       </div>
     </>
   );
