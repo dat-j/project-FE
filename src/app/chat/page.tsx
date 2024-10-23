@@ -38,7 +38,7 @@ export default function Chat() {
 
   const fetchMessages = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/messages", {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/messages`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setMessages(response.data);
