@@ -11,7 +11,7 @@ interface Message {
   content: string;
 }
 
-const socket = io("http://localhost:3002");
+const socket = io(process.env.NEXT_PUBLIC_API_BASE_URL);
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
