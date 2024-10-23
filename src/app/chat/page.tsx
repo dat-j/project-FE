@@ -54,6 +54,7 @@ export default function Chat() {
         // const token = localStorage.getItem('token');
         // const decodedToken = JSON.parse(atob(token.split('.')[1]));
         // const userId = decodedToken.sub;
+        const idUser = sessionStorage.getItem("idUser")
         socket.emit("sendMessage", { idUser, content: inputMessage });
         setInputMessage("");
       } catch (error) {
