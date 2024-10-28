@@ -39,7 +39,7 @@ export default function Chat() {
   const fetchMessages = async () => {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/messages`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: { Authorization: `Bearer ${sessionStorage.getItem("token")}` },
       });
       setMessages(response.data);
     } catch (error) {
@@ -51,12 +51,13 @@ export default function Chat() {
     e.preventDefault();
     if (inputMessage.trim()) {
       try {
-        // const token = localStorage.getItem('token');
-        // const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        // const userId = decodedToken.sub;
-        const idUser = sessionStorage.getItem("idUser")
-        socket.emit("sendMessage", { idUser, content: inputMessage });
+        const token = sessionStorage.getItem("token") || "";
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userId = decodedToken.userId;
+        // const idUser = sessionStorage.getItem("idUser")
+        socket.emit("sendMessage", { userId, content: inputMessage });
         setInputMessage("");
+        debugger
       } catch (error) {
         console.error("Failed to send message:", error);
       }

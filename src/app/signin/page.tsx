@@ -62,6 +62,7 @@ export default function SignIn() {
     try {
       const res = await fetchUser(values)
       if (res.data) {
+        sessionStorage.setItem("token", res.data?.token);
         //save to sessionStorage
         sessionStorage.setItem("idUser", res.data?.user.id);
         //save to Redux
