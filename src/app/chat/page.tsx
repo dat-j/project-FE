@@ -46,7 +46,7 @@ export default function Chat() {
       console.error("Failed to fetch messages:", error);
     }
   };
-
+  console.log(messages)
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (inputMessage.trim()) {

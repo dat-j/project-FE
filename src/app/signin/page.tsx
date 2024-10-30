@@ -28,6 +28,7 @@ import useRequest from "@/api/useRequest";
 import { API } from "@/api/api";
 import { useUser } from "@/redux/hooks";
 import { useFetch } from "@/api/tool";
+import Loader from "@/components/loading/Loader";
 
 
 const formSchema = z.object({
@@ -74,8 +75,8 @@ export default function SignIn() {
         });
         setTimeout(() => {
           setIsLoading(false);
-          alert("login success!");
-          // router.push('/dashboard') // Redirect to dashboard after successful sign-in
+          // alert("login success!");
+           router.push('/chat') 
         }, 3000);
       }
     } catch (error) {
@@ -84,7 +85,7 @@ export default function SignIn() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center pt-40">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Sign In</CardTitle>
@@ -143,6 +144,9 @@ export default function SignIn() {
           </p>
         </CardFooter>
       </Card>
+      {
+        isLoading && <Loader/>
+      }
     </div>
   );
 }

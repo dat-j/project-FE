@@ -55,6 +55,7 @@ export const DATA = {
       Profile: {
         name: "Profile",
         url: "/signin",
+        url2:"/me",
         icon: Icons.person,
 
         navbar: true,

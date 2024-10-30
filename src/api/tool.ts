@@ -1,7 +1,7 @@
 import { API } from "./api";
 import useRequest from "./useRequest";
 
-interface UserResponse {
+export interface UserResponse {
   data?: {
     user: {
       id: number;
@@ -16,6 +16,11 @@ export function useFetch(){
   async function fetchUser(value: any) {
     return await Request.post<UserResponse>(API.USER_SIGN_IN, value);
   }
-  return {fetchUser}
+
+  async function fetchUserDetail(value: any) {
+    return await Request.post<UserResponse>(API.GET_USER_DATA, value);
+  }
+
+  return {fetchUser,fetchUserDetail}
 };
 
