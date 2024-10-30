@@ -57,7 +57,6 @@ export default function Chat() {
         // const idUser = sessionStorage.getItem("idUser")
         socket.emit("sendMessage", { userId, content: inputMessage });
         setInputMessage("");
-        debugger
       } catch (error) {
         console.error("Failed to send message:", error);
       }
