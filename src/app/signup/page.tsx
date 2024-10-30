@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input'
 import useRequest from '@/api/useRequest'
 import { API } from '@/api/api'
+import Loader from "@/components/loading/Loader";
 
 export default function SignUp() {
   const router = useRouter()
@@ -69,11 +70,12 @@ export default function SignUp() {
         if(res.data){
           setTimeout(() => {
             setIsLoading(false)
+            alert('Sign up successful')
             router.push('/dashboard') // Redirect to dashboard after successful sign-in
           }, 3000)
         }
       } catch (error) {
-        throw new Error("Error Login!")
+        console.log(error)
       }
     }
   }
@@ -153,6 +155,9 @@ export default function SignUp() {
           </p>
         </CardFooter>
       </Card>
+      {
+        isLoading && <Loader/>
+      }
     </div>
   )
 }

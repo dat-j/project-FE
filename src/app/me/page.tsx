@@ -24,6 +24,9 @@ export default function MyProfile() {
   useEffect(()=>{
     fetchUserData()
   },[])
+
+  console.log(userData)
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row items-center md:items-start mb-8">
