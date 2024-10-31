@@ -76,7 +76,7 @@ export default function SignIn() {
         setTimeout(() => {
           setIsLoading(false);
           // alert("login success!");
-           router.push('/chat') 
+           router.push('/me')
         }, 3000);
       }
     } catch (error) {

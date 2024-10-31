@@ -4,25 +4,33 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Grid, User, Settings } from "lucide-react"
 import { useFetch, UserResponse } from "@/api/tool"
 import { useEffect, useState } from "react"
+import {useRouter} from "next/navigation";
 
 
 
 export default function MyProfile() {
-  const [userData, setUserData] = useState<UserResponse>()
+  const [userData, setUserData] = useState<any>()
   const {fetchUserDetail} = useFetch()
+  const router = useRouter()
 
   const fetchUserData = async () => {
     try {
       const idUser = sessionStorage.getItem("idUser") || ""
+      console.log(idUser)
     const response = await fetchUserDetail(idUser)
     setUserData(response.data)
     } catch (error) {
       console.log(error)
     }
   }
-
+  console.log(userData)
   useEffect(()=>{
-    fetchUserData()
+    if(sessionStorage.getItem("idUser")){
+      fetchUserData()
+    }
+    else{
+      router.push("/signin")
+    }
   },[])
 
   console.log(userData)
@@ -31,12 +39,12 @@ export default function MyProfile() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row items-center md:items-start mb-8">
         <Avatar className="w-32 h-32 md:w-40 md:h-40 mb-4 md:mb-0 md:mr-8">
-          <AvatarImage src="/placeholder.svg?height=160&width=160" alt="@johndoe" />
-          <AvatarFallback>JD</AvatarFallback>
+          <AvatarImage src={userData?.avatarUrl} alt="@johndoe" />
+          <AvatarFallback>avatar</AvatarFallback>
         </Avatar>
         <div className="text-center md:text-left">
           <div className="flex items-center mb-4">
-            <h1 className="text-2xl font-bold mr-4">{userData?.data?.user.username}</h1>
+            <h1 className="text-2xl font-bold mr-4">{userData?.username}</h1>
             <Button variant="outline" size="sm" className="mr-2">
               Edit Profile
             </Button>

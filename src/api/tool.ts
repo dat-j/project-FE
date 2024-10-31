@@ -1,5 +1,6 @@
 import { API } from "./api";
 import useRequest from "./useRequest";
+import {replace} from "stylis";
 
 export interface UserResponse {
   data?: {
@@ -18,7 +19,7 @@ export function useFetch(){
   }
 
   async function fetchUserDetail(value: any) {
-    return await Request.post<UserResponse>(API.GET_USER_DATA, value);
+    return await Request.get(API.GET_USER_DATA.replace("{id}",value));
   }
 
   return {fetchUser,fetchUserDetail}
